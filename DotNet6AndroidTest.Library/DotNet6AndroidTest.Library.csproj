@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0-android</TargetFramework>
+    <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- <AndroidUseDesignerAssembly>false</AndroidUseDesignerAssembly>
+    <AndroidUseIntermediateDesignerFile>true</AndroidUseIntermediateDesignerFile> -->
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Xamarin.AndroidX.AppCompat" Version="1.4.1.1" />
+    <PackageReference Include="Xamarin.Google.Android.Material" Version="1.6.0" />
+    <PackageReference Include="Xamarin.AndroidX.Navigation.Fragment" Version="2.4.2" />
+    <PackageReference Include="SkiaSharp.Views" Version="2.88.3" />
+    <PackageReference Include="Humanizer" Version="*" />
+  </ItemGroup>
+</Project>

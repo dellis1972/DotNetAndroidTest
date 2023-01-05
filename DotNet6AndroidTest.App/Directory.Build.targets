@@ -1,0 +1,5 @@
+<Project>
+  <Target Name="GenerateInfo" AfterTargets="Build">
+    <Message Importance="High" Text="[BuildInfo]:TargetFramework=$(TargetFramework);PackageFilename=$(_AndroidPackage)-Signed.$(AndroidPackageFormat);ObjDir=$(IntermediateOutputPath);OutputDir=$(OutputPath);"/>
+  </Target>
+</Project>

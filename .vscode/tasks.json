@@ -1,0 +1,86 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+          "label": "build-sample",
+          "type": "shell",
+          "command": "${config:Xamarin.Android.Home}bin/${config:Xamarin.Android.BuildConfig}/dotnet/dotnet build ${input:project} -c ${input:configuration} -bl -t:${input:target}",
+          "group": {
+              "kind": "build",
+              "isDefault": true
+          },
+          "problemMatcher": [
+              "$msCompile"
+          ]
+        },
+        {
+          "label": "run-sample",
+          "type": "shell",
+          "command": "${config:Xamarin.Android.Home}bin/${config:Xamarin.Android.BuildConfig}/dotnet/dotnet build ${input:project} -t:Run -c ${input:configuration} -p:AndroidAttachDebugger=${input:attach} -bl -v:diag",
+          "group": {
+              "kind": "build",
+              "isDefault": false
+          },
+          "problemMatcher": [
+              "$msCompile"
+          ]
+        },
+        {
+          "label": "run-performance",
+          "type": "shell",
+          "command": "${config:XAPerf.Home}/xaptr -x ${workspaceFolder}/DotNet6AndoridTest.App/testrun.conf -f",
+          "group": {
+              "kind": "build",
+              "isDefault": false
+          },
+          "problemMatcher": [
+              "$msCompile"
+          ]
+        },
+    ],    
+    "inputs": [
+      {
+        "id": "configuration",
+        "type": "pickString",
+        "default": "Debug",
+        "description": "The Build Configuration",
+        "options": [ "Debug", "Release"]
+      },
+      {
+        "id": "attach",
+        "type": "pickString",
+        "default": "Build",
+        "description": "Attach Debugger?",
+        "options": [
+            "true",
+            "false",
+        ]
+      },
+      {
+        // Add additional projects here. They will be available in the drop down
+        // in vscode.
+        "id": "project",
+        "type": "pickString",
+        "default": "DotNet6AndroidTest.App/DotNet6AndroidTest.App.csproj",
+        "description": "Pick the Project you want to build.",
+        "options": [
+            "DotNet6AndroidTest.App/DotNet6AndroidTest.App.csproj",
+            "DotNet6AndroidTest.Library/DotNet6AndroidTest.Library.csproj",
+        ]
+      },
+      {
+        "id": "target",
+        "type": "pickString",
+        "default": "Build",
+        "description": "Select MSBuild Target to run.",
+        "options": [
+            "Build",
+            "Install",
+            "SignAndroidPackage",
+            "Clean"
+        ]
+      },
+    ]
+}
